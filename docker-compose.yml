@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - fastapi_postgresql_vol:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+  fastapi:
+    build:
+      context: .
+    ports:
+    # Host:Container
+      - "8080:80"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+    volumes:
+      - "./app:/code/app"
+volumes:
+  fastapi_postgresql_vol:
+    external: true
