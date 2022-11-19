@@ -1,5 +1,5 @@
 SQLAlchemy==1.4.43
 fastapi==0.86.0
 psycopg2==2.9.5
-pytest==7.20
+pytest==7.2.0
 uvicorn==0.18.3

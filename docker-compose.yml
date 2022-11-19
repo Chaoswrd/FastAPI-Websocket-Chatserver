@@ -1,5 +1,6 @@
 services:
   db:
+    container_name: db 
     image: postgres
     volumes:
       - fastapi_postgresql_vol:/var/lib/postgresql/data
@@ -10,6 +11,7 @@ services:
     ports:
       - "5432:5432"
   fastapi:
+    container_name: fastapi
     build:
       context: .
     ports:
